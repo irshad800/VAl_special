@@ -23,8 +23,9 @@
 }
 
 .envelope {
-  width: 300px;
-  height: 200px;
+  width: min(80vw, 300px);
+  aspect-ratio: 3 / 2;
+  height: auto;
   background-color: #ffcdd2;
   position: relative;
   border-radius: 0 0 10px 10px;
@@ -61,8 +62,8 @@
   }
 
   .letter {
-    width: 260px;
-    height: 180px;
+    width: 86%;
+    height: 86%;
     background-color: white;
     position: absolute;
     bottom: 10px;
@@ -75,14 +76,14 @@
     transition: transform 0.5s ease;
 
     .heart {
-      font-size: 3rem;
+      font-size: clamp(2rem, 6vw, 3rem);
       margin-bottom: 10px;
       animation: beat 1.5s infinite;
     }
 
     .text {
       font-family: 'Pacifico', cursive;
-      font-size: 1.5rem;
+      font-size: clamp(1rem, 4vw, 1.5rem);
       color: #d32f2f;
     }
   }
@@ -99,9 +100,36 @@
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
-  width: 100%;
+  width: 220px;
   position: absolute;
   bottom: -60px;
+}
+
+@media (max-width: 480px) {
+  .landing-container {
+    padding: 2rem 1rem;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .heart-envelope {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .envelope {
+    width: 90vw;
+    aspect-ratio: 3 / 2;
+  }
+
+  .open-btn {
+    position: relative;
+    bottom: 0;
+    width: 60%;
+    margin-top: 1rem;
+  }
 }
 
 @keyframes beat {
