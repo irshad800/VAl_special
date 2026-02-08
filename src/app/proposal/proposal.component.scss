@@ -19,6 +19,20 @@
     animation: fadeIn 0.5s ease-out;
     max-width: 90%;
     width: 100%;
+    position: relative;
+}
+
+.hint-message {
+    font-size: clamp(1rem, 3.5vw, 1.3rem);
+    color: #ff4081;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, #fff3f8 0%, #ffe8f0 100%);
+    border-radius: 15px;
+    border-left: 4px solid #ff4081;
+    animation: slideDown 0.4s ease-out, pulse 1.5s infinite;
+    text-align: center;
 }
 
 img {
@@ -80,6 +94,30 @@ button {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
     }
 }
 

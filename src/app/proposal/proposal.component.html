@@ -1,5 +1,6 @@
 <div class="proposal-container">
     <div *ngIf="!showSuccess" class="question-box">
+        <p *ngIf="hintMessage" class="hint-message">{{ hintMessage }}</p>
         <h1>Will you be my Valentine? 🌹</h1>
         <div class="gif-container">
             <img src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif"
@@ -14,7 +15,6 @@
 
     <div *ngIf="showSuccess" class="success-box">
         <h1>YAY! I knew you'd say Yes! 🎉🥰</h1>
-        <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif"
-            alt="Bear Kiss" />
+        <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="Bear Kiss" />
     </div>
 </div>

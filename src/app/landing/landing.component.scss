@@ -69,6 +69,21 @@
     z-index: 2;
   }
 
+  .for-you-text {
+    position: absolute;
+    top: clamp(10px, 2.5vw, 15px);
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(1.1rem, 5vw, 1.8rem);
+    color: #d32f2f;
+    text-align: center;
+    font-weight: 400;
+    white-space: nowrap;
+    z-index: 4;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
+  }
+
   .letter {
     width: 75%;
     height: 60%;
@@ -82,30 +97,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: clamp(6px, 1.5vw, 12px);
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
     transition: transform 0.5s ease;
     border-radius: 4px;
     padding: clamp(12px, 3vw, 18px);
 
     .heart {
-      font-size: clamp(2rem, 8vw, 3.5rem);
+      font-size: clamp(2.5rem, 10vw, 4rem);
       animation: beat 1.5s infinite;
-      line-height: 0.95;
+      line-height: 1;
       margin: 0;
-      flex-shrink: 0;
-    }
-
-    .text {
-      font-family: 'Pacifico', cursive;
-      font-size: clamp(1rem, 4.5vw, 1.6rem);
-      color: #d32f2f;
-      text-align: center;
-      line-height: 1.2;
-      padding: 0 8px;
-      font-weight: 400;
-      flex-shrink: 0;
-      white-space: nowrap;
     }
   }
 }
