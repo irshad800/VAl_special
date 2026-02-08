@@ -2,10 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding: 2rem 1rem;
+  height: 100vh;
+  padding: 1.5rem 1rem;
   background: linear-gradient(135deg, #fceeff 0%, #f5f7fa 100%);
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .heart-envelope {
@@ -20,7 +20,7 @@
 
   &:hover {
     transform: scale(1.05);
-    
+
     .open-btn {
       background-color: #ff4081;
       transform: translateY(-5px);
@@ -35,7 +35,7 @@
   background-color: #ffcdd2;
   position: relative;
   border-radius: 0 0 10px 10px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -61,8 +61,8 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-left: clamp(80px, 25vw, 150px) solid #ffcdd2;
     border-right: clamp(80px, 25vw, 150px) solid #ffcdd2;
     border-bottom: clamp(60px, 15vw, 100px) solid transparent;
@@ -70,33 +70,41 @@
   }
 
   .letter {
-    width: 90%;
-    height: 85%;
+    width: 88%;
+    height: 78%;
     background-color: white;
     position: absolute;
-    bottom: clamp(5px, 2vw, 10px);
+    bottom: clamp(10px, 3vw, 15px);
     left: 50%;
     transform: translateX(-50%);
-    z-index: 0;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+    gap: clamp(3px, 1vw, 8px);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
     transition: transform 0.5s ease;
+    border-radius: 3px;
+    padding: clamp(8px, 2vw, 12px);
 
     .heart {
-      font-size: clamp(2rem, 6vw, 3rem);
-      margin-bottom: clamp(5px, 2vw, 10px);
+      font-size: clamp(2rem, 8vw, 3.5rem);
       animation: beat 1.5s infinite;
+      line-height: 0.9;
+      margin: 0;
+      flex-shrink: 0;
     }
 
     .text {
       font-family: 'Pacifico', cursive;
-      font-size: clamp(1rem, 4vw, 1.5rem);
+      font-size: clamp(1rem, 4.5vw, 1.6rem);
       color: #d32f2f;
       text-align: center;
-      line-height: 1.2;
+      line-height: 1.1;
+      padding: 0 5px;
+      font-weight: 400;
+      flex-shrink: 0;
     }
   }
 }
@@ -110,7 +118,7 @@
   border: none;
   border-radius: 25px;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   width: auto;
   position: relative;
@@ -121,11 +129,12 @@
 @media (max-width: 600px) {
   .landing-container {
     padding: 1rem;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
   }
 
   .heart-envelope {
@@ -135,6 +144,16 @@
 
   .envelope {
     width: clamp(240px, 90vw, 300px);
+  }
+
+  .letter {
+    .heart {
+      font-size: clamp(1.8rem, 7vw, 2.5rem);
+    }
+
+    .text {
+      font-size: clamp(0.95rem, 4vw, 1.3rem);
+    }
   }
 
   .open-btn {
@@ -157,6 +176,18 @@
     width: min(95vw, 240px);
   }
 
+  .letter {
+    padding: clamp(6px, 1.5vw, 10px);
+
+    .heart {
+      font-size: clamp(1.6rem, 6vw, 2.2rem);
+    }
+
+    .text {
+      font-size: clamp(0.85rem, 3.5vw, 1.1rem);
+    }
+  }
+
   .open-btn {
     padding: 10px 20px;
     font-size: 0.9rem;
@@ -165,7 +196,15 @@
 }
 
 @keyframes beat {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }

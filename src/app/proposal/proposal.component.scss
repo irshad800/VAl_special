@@ -2,11 +2,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    padding: 2rem 1rem;
+    height: 100vh;
+    padding: 1.5rem 1rem;
     background-color: #ffebee;
     font-family: 'Poppins', sans-serif;
     text-align: center;
+    overflow: hidden;
 }
 
 .question-box,
@@ -85,7 +86,8 @@ button {
 @media (max-width: 600px) {
     .proposal-container {
         padding: 1rem;
-        min-height: 100vh;
+        height: 100vh;
+        overflow: hidden;
     }
 
     .question-box,
@@ -105,15 +107,19 @@ button {
     }
 
     .buttons {
-        flex-direction: column;
-        gap: 12px;
+        flex-direction: row;
+        gap: 15px;
         margin-top: 1.5rem;
+        align-items: center;
+        justify-content: center;
     }
 
     button {
-        width: 100%;
-        padding: 12px 24px;
-        font-size: clamp(0.9rem, 3.5vw, 1rem);
+        padding: 14px 32px;
+        font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+        border-radius: 50px;
+        min-width: 120px;
+        width: auto;
     }
 }
 
