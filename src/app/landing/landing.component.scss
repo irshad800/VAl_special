@@ -2,15 +2,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 2rem 1rem;
   background: linear-gradient(135deg, #fceeff 0%, #f5f7fa 100%);
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .heart-envelope {
   position: relative;
   cursor: pointer;
   transition: transform 0.3s ease;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &:hover {
     transform: scale(1.05);
@@ -23,7 +29,7 @@
 }
 
 .envelope {
-  width: min(80vw, 300px);
+  width: clamp(250px, 85vw, 350px);
   aspect-ratio: 3 / 2;
   height: auto;
   background-color: #ffcdd2;
@@ -38,13 +44,14 @@
   .flap {
     position: absolute;
     top: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 0;
     height: 0;
-    border-left: 150px solid transparent;
-    border-right: 150px solid transparent;
-    border-top: 100px solid #ef9a9a;
-    transform-origin: top;
+    border-left: clamp(80px, 25vw, 150px) solid transparent;
+    border-right: clamp(80px, 25vw, 150px) solid transparent;
+    border-top: clamp(60px, 15vw, 100px) solid #ef9a9a;
+    transform-origin: top center;
     z-index: 3;
     transition: transform 0.5s ease;
   }
@@ -52,21 +59,24 @@
   .pocket {
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 0; 
     height: 0; 
-    border-left: 150px solid #ffcdd2;
-    border-right: 150px solid #ffcdd2;
-    border-bottom: 100px solid transparent;
+    border-left: clamp(80px, 25vw, 150px) solid #ffcdd2;
+    border-right: clamp(80px, 25vw, 150px) solid #ffcdd2;
+    border-bottom: clamp(60px, 15vw, 100px) solid transparent;
     z-index: 2;
   }
 
   .letter {
-    width: 86%;
-    height: 86%;
+    width: 90%;
+    height: 85%;
     background-color: white;
     position: absolute;
-    bottom: 10px;
+    bottom: clamp(5px, 2vw, 10px);
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 0;
     display: flex;
     flex-direction: column;
@@ -77,7 +87,7 @@
 
     .heart {
       font-size: clamp(2rem, 6vw, 3rem);
-      margin-bottom: 10px;
+      margin-bottom: clamp(5px, 2vw, 10px);
       animation: beat 1.5s infinite;
     }
 
@@ -85,14 +95,16 @@
       font-family: 'Pacifico', cursive;
       font-size: clamp(1rem, 4vw, 1.5rem);
       color: #d32f2f;
+      text-align: center;
+      line-height: 1.2;
     }
   }
 }
 
 .open-btn {
-  margin-top: 2rem;
-  padding: 10px 30px;
-  font-size: 1.2rem;
+  margin-top: clamp(1.5rem, 5vw, 2.5rem);
+  padding: clamp(10px, 2vw, 15px) clamp(20px, 4vw, 40px);
+  font-size: clamp(1rem, 3vw, 1.2rem);
   background-color: #ff80ab;
   color: white;
   border: none;
@@ -100,35 +112,55 @@
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
-  width: 220px;
-  position: absolute;
-  bottom: -60px;
+  width: auto;
+  position: relative;
+  white-space: nowrap;
+  font-weight: 500;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .landing-container {
-    padding: 2rem 1rem;
-    height: auto;
+    padding: 1rem;
     min-height: 100vh;
-  }
-
-  .heart-envelope {
-    width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
+  .heart-envelope {
+    width: 100%;
+    max-width: none;
+  }
+
   .envelope {
-    width: 90vw;
-    aspect-ratio: 3 / 2;
+    width: clamp(240px, 90vw, 300px);
   }
 
   .open-btn {
-    position: relative;
-    bottom: 0;
-    width: 60%;
-    margin-top: 1rem;
+    margin-top: 2rem;
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+
+  .heart-envelope:hover {
+    transform: scale(1.02);
+  }
+}
+
+@media (max-width: 380px) {
+  .landing-container {
+    padding: 0.75rem;
+  }
+
+  .envelope {
+    width: min(95vw, 240px);
+  }
+
+  .open-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
   }
 }
 
