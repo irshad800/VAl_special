@@ -1,0 +1,20 @@
+<div class="proposal-container">
+    <div *ngIf="!showSuccess" class="question-box">
+        <h1>Will you be my Valentine? 🌹</h1>
+        <div class="gif-container">
+            <img src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif"
+                alt="Cute Bear with Roses" />
+        </div>
+        <div class="buttons">
+            <button class="yes-btn" (click)="onYesClick()">Yes! 💖</button>
+            <button class="no-btn" (mouseenter)="onNoHover()" (click)="onNoHover()" [ngStyle]="noBtnStyle">No
+                😢</button>
+        </div>
+    </div>
+
+    <div *ngIf="showSuccess" class="success-box">
+        <h1>YAY! I knew you'd say Yes! 🎉🥰</h1>
+        <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif"
+            alt="Bear Kiss" />
+    </div>
+</div>

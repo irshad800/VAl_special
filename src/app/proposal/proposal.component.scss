@@ -1,0 +1,76 @@
+.proposal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffebee;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.question-box,
+.success-box {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-out;
+    max-width: 90%;
+}
+
+img {
+    max-width: 300px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+h1 {
+    color: #c62828;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+button {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.yes-btn {
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.no-btn {
+    background-color: #ef5350;
+    color: white;
+    // position: absolute is applied dynamically
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
