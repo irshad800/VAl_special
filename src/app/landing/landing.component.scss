@@ -142,17 +142,19 @@
   .heart-envelope {
     width: 100%;
     max-width: none;
+    // Add touch-action manipulation for better tap handling
+    touch-action: manipulation;
   }
 
   .envelope {
-    width: clamp(240px, 90vw, 300px);
+    width: clamp(280px, 90vw, 340px);
   }
 
   .letter {
     bottom: 20%;
 
     .heart {
-      font-size: clamp(1.8rem, 7vw, 2.8rem);
+      font-size: clamp(2rem, 8vw, 3rem);
     }
 
     .text {

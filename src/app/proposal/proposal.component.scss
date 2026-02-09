@@ -23,14 +23,19 @@
 
 .success-box {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-    padding: clamp(2rem, 6vw, 4rem);
+    // Reduce padding on smaller screens to prevent overflow
+    padding: clamp(1.5rem, 4vw, 3rem);
     border-radius: 30px;
     box-shadow: 0 20px 60px rgba(118, 75, 162, 0.4);
     animation: successZoomIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     max-width: 90%;
+    // Ensure it doesn't exceed viewport height with some margin
+    max-height: 90vh;
     width: 100%;
     position: relative;
     overflow: hidden;
+    // Add scroll if content is too tall on very small screens (landscape mobile)
+    overflow-y: auto;
 
     &::before {
         content: '';
@@ -41,15 +46,16 @@
         height: 200%;
         background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
         animation: rotate 20s linear infinite;
+        pointer-events: none;
     }
 }
 
 .hint-message {
-    font-size: clamp(1rem, 3.5vw, 1.3rem);
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
     color: #ff4081;
     font-weight: 600;
     margin: 0 0 1rem 0;
-    padding: 0.75rem 1rem;
+    padding: 0.5rem 1rem;
     background: linear-gradient(135deg, #fff3f8 0%, #ffe8f0 100%);
     border-radius: 15px;
     border-left: 4px solid #ff4081;
@@ -58,39 +64,45 @@
 }
 
 img {
-    max-width: min(300px, 80vw);
+    max-width: min(280px, 70vw);
     width: 100%;
     border-radius: 10px;
-    margin: 20px 0;
+    margin: 15px 0;
     aspect-ratio: auto;
 }
 
 h1 {
     color: #c62828;
-    font-size: clamp(1.5rem, 6vw, 2.5rem);
-    margin-bottom: 2rem;
+    font-size: clamp(1.4rem, 5vw, 2.2rem);
+    margin-bottom: 1.5rem;
     line-height: 1.3;
 }
 
 .success-content {
     position: relative;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .success-title {
     color: white;
-    font-size: clamp(3rem, 10vw, 5rem);
+    // Slightly smaller max font size to prevent cutting off
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
     margin-bottom: 0.5rem;
     font-weight: 900;
     text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
     animation: bounce 1s ease-in-out;
     letter-spacing: 0.05em;
+    line-height: 1.1;
+    padding-top: 10px; // Extra space for bounce
 }
 
 .success-subtitle {
     color: white;
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
-    margin-bottom: 2rem;
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    margin-bottom: 1.5rem;
     font-weight: 600;
     text-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     animation: fadeInUp 0.8s ease-out 0.3s backwards;
@@ -416,18 +428,20 @@ button {
 }
 
 .character {
-    font-size: clamp(80px, 15vw, 150px);
+    font-size: clamp(60px, 15vw, 150px);
     position: absolute;
     filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
 
     &.boy {
+        // Start off-screen left, end near center (offset by character half-width approx)
+        left: -30vw;
         animation: slideInFromLeft 1.5s ease-out forwards, hug 1.5s 1.5s ease-in-out forwards;
-        left: -200px;
     }
 
     &.girl {
+        // Start off-screen right, end near center
+        right: -30vw;
         animation: slideInFromRight 1.5s ease-out forwards, hug 1.5s 1.5s ease-in-out forwards;
-        right: -200px;
     }
 }
 
@@ -439,7 +453,7 @@ button {
 
     .heart {
         position: absolute;
-        font-size: clamp(30px, 6vw, 50px);
+        font-size: clamp(20px, 6vw, 50px);
         opacity: 0;
         animation: floatHeart 2s 1.8s ease-out forwards;
 
@@ -477,39 +491,43 @@ button {
 
 @keyframes slideInFromLeft {
     0% {
-        left: -200px;
+        left: -30vw;
         transform: translateX(0) rotate(-10deg);
     }
 
     100% {
-        left: calc(50% - 100px);
+        // Move to just left of center. 
+        // 50% is center line. We want to be slightly left.
+        // Using vw ensures it scales with screen width.
+        left: 35%;
         transform: translateX(-50%) rotate(0deg);
     }
 }
 
 @keyframes slideInFromRight {
     0% {
-        right: -200px;
+        right: -30vw;
         transform: translateX(0) rotate(10deg);
     }
 
     100% {
-        right: calc(50% - 100px);
+        // Move to just right of center.
+        right: 35%;
         transform: translateX(50%) rotate(0deg);
     }
 }
 
 @keyframes hug {
     0% {
-        transform: translateX(0) scale(1);
+        transform: translateX(0) scale(1) rotate(0deg);
     }
 
     50% {
-        transform: translateX(0) scale(1.2);
+        transform: translateX(0) scale(1.2) rotate(5deg);
     }
 
     100% {
-        transform: translateX(0) scale(1.1);
+        transform: translateX(0) scale(1.1) rotate(0deg);
     }
 }
 
