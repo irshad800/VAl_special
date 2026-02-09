@@ -1,0 +1,86 @@
+.dashboard-container {
+    padding: 20px;
+    background-color: #fce4ec;
+    /* Light pink background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+}
+
+h1 {
+    color: #c62828;
+    /* Deep red */
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+    h3 {
+        margin: 0 0 10px;
+        color: #555;
+    }
+
+    p {
+        font-size: 2em;
+        font-weight: bold;
+        color: #e91e63;
+        /* Pink */
+        margin: 0;
+    }
+}
+
+.table-responsive {
+    overflow-x: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #e91e63;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.device-info {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.9em;
+    color: #777;
+}
+
+.loading,
+.no-data {
+    text-align: center;
+    font-size: 1.2em;
+    color: #888;
+    margin-top: 50px;
+}

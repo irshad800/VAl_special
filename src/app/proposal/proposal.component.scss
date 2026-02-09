@@ -23,20 +23,71 @@
 
 .success-box {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-    // Reduce padding on smaller screens to prevent overflow
     padding: clamp(1.5rem, 4vw, 3rem);
     border-radius: 30px;
     box-shadow: 0 20px 60px rgba(118, 75, 162, 0.4);
     animation: successZoomIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    max-width: 90%;
-    // Ensure it doesn't exceed viewport height with some margin
+    max-width: 90vw;
     max-height: 90vh;
     width: 100%;
+    height: 100%;
     position: relative;
     overflow: hidden;
-    // Add scroll if content is too tall on very small screens (landscape mobile)
-    overflow-y: auto;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    box-sizing: border-box;
+    .confetti-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        border-radius: inherit;
+        z-index: 1;
+    }
+    .success-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 0;
+        max-height: 100%;
+        overflow: hidden;
+        padding: 2vh 2vw;
+        gap: 1.2vh;
+    }
+    .success-title, .success-subtitle, .heart-burst-row, .image-container, .romantic-message {
+        max-width: 100%;
+        box-sizing: border-box;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .heart-burst-row {
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 95vw;
+        gap: 0.7rem;
+    }
+    .image-container img {
+        max-width: 320px;
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
     &::before {
         content: '';
         position: absolute;
@@ -84,11 +135,20 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100vw;
+    flex: 1 1 auto;
+    min-height: 0;
+    /* Scale down if needed to fit */
+    > * {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
 }
 
 .success-title {
     color: white;
-    // Slightly smaller max font size to prevent cutting off
     font-size: clamp(2.5rem, 8vw, 4.5rem);
     margin-bottom: 0.5rem;
     font-weight: 900;
@@ -96,7 +156,24 @@ h1 {
     animation: bounce 1s ease-in-out;
     letter-spacing: 0.05em;
     line-height: 1.1;
-    padding-top: 10px; // Extra space for bounce
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #ffb347 0%, #ff5e62 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.emoji {
+    font-size: 1.2em;
+    margin-left: 0.2em;
 }
 
 .success-subtitle {
@@ -108,42 +185,33 @@ h1 {
     animation: fadeInUp 0.8s ease-out 0.3s backwards;
 }
 
-.heart-burst {
+.heart-burst-row {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
-    margin: 2rem 0;
-
-    .burst-heart {
-        font-size: clamp(2rem, 5vw, 3rem);
-        animation: heartPulse 1.5s ease-in-out infinite;
-        display: inline-block;
-
-        &:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        &:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        &:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        &:nth-child(4) {
-            animation-delay: 0.6s;
-        }
-
-        &:nth-child(5) {
-            animation-delay: 0.8s;
-        }
-
-        &:nth-child(6) {
-            animation-delay: 1s;
-        }
-    }
+    align-items: center;
+    gap: 0.7rem;
+    margin: 1.5rem 0 1.2rem 0;
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+.burst-heart {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    animation: heartPulse 1.5s ease-in-out infinite;
+    display: inline-block;
+    filter: drop-shadow(0 2px 8px rgba(255, 105, 180, 0.2));
+}
+.burst-heart:nth-child(1) { animation-delay: 0s; }
+.burst-heart:nth-child(2) { animation-delay: 0.15s; }
+.burst-heart:nth-child(3) { animation-delay: 0.3s; }
+.burst-heart:nth-child(4) { animation-delay: 0.45s; }
+.burst-heart:nth-child(5) { animation-delay: 0.6s; }
+.burst-heart:nth-child(6) { animation-delay: 0.75s; }
+.burst-heart:nth-child(7) { animation-delay: 0.9s; }
+.burst-heart:nth-child(8) { animation-delay: 1.05s; }
 
 .image-container {
     position: relative;
@@ -159,16 +227,91 @@ h1 {
 }
 
 .romantic-message {
-    color: white;
+    color: #fff;
     font-size: clamp(1.1rem, 3.5vw, 1.5rem);
     margin-top: 2rem;
     font-weight: 600;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     animation: fadeInUp 0.8s ease-out 0.7s backwards;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.18);
     padding: 1rem 2rem;
     border-radius: 50px;
     backdrop-filter: blur(10px);
+    max-width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+.highlight {
+    color: #ffb347;
+    font-weight: bold;
+    background: linear-gradient(90deg, #fffbe7 0%, #ffe0e9 100%);
+    border-radius: 0.5em;
+    padding: 0 0.3em;
+}
+// Responsive tweaks for the success box and heart burst
+@media (max-width: 900px) {
+    .success-box {
+        max-width: 100vw;
+        padding: 1.2rem 0.5rem;
+        aspect-ratio: unset;
+        height: 100vh;
+    }
+    .success-content {
+        max-width: 100vw;
+        width: 100vw;
+        padding: 0;
+        max-height: 100%;
+    }
+    .heart-burst-row {
+        max-width: 95vw;
+        gap: 0.5rem;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .success-box {
+        padding: 1rem 0.2rem;
+        border-radius: 18px;
+        max-width: 100vw;
+        aspect-ratio: unset;
+        height: 100vh;
+    }
+    .success-content {
+        max-width: 100vw;
+        width: 100vw;
+        padding: 0;
+        max-height: 100%;
+    }
+    .success-title {
+        font-size: clamp(1.5rem, 7vw, 2.5rem);
+        padding-top: 0.5rem;
+    }
+    .heart-burst-row {
+        gap: 0.3rem;
+        font-size: 1rem;
+        margin: 1rem 0 0.7rem 0;
+    }
+    .romantic-message {
+        font-size: 1rem;
+        padding: 0.7rem 0.5rem;
+    }
+    .image-container img {
+        max-width: 90vw;
+    }
+}
+
+@media (max-width: 400px) {
+    .success-title {
+        font-size: 1.1rem;
+    }
+    .heart-burst-row {
+        font-size: 0.8rem;
+    }
+    .romantic-message {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.2rem;
+    }
 }
 
 .confetti-container {
@@ -179,6 +322,8 @@ h1 {
     height: 100%;
     overflow: hidden;
     pointer-events: none;
+    border-radius: inherit;
+    z-index: 1;
 }
 
 .confetti {
