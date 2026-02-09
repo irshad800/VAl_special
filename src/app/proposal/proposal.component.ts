@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 export class ProposalComponent {
     noBtnStyle: { [key: string]: string } = {};
     showSuccess: boolean = false;
+    showAnimation: boolean = false;
     noClickCount: number = 0;
     hintMessage: string = '';
 
@@ -50,8 +51,15 @@ export class ProposalComponent {
     }
 
     onYesClick() {
-        this.showSuccess = true;
-        this.triggerConfetti();
+        // First show the animation
+        this.showAnimation = true;
+
+        // After 3 seconds, show the success message
+        setTimeout(() => {
+            this.showAnimation = false;
+            this.showSuccess = true;
+            this.triggerConfetti();
+        }, 3000);
     }
 
     triggerConfetti() {
